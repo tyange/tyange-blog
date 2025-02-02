@@ -13,7 +13,17 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
+          theme: "github-light",
           langs: ["rust", "go", "python"],
+        },
+      },
+      pathMeta: {
+        slugifyOptions: {
+          replacement: "-",
+          lower: false,
+          strict: false,
+          trim: true,
+          remove: /[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F\s\w-]/g,
         },
       },
     },

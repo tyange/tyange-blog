@@ -5,7 +5,11 @@
         Featured Posts
       </h2>
       <div class="flex flex-col gap-5">
-        <FeaturedPost v-for="post in featuredPosts" :featured-post="post" />
+        <FeaturedPost
+          v-for="post in featuredPosts"
+          :key="post.id"
+          :featured-post="post"
+        />
       </div>
     </div>
     <div>
@@ -13,7 +17,11 @@
         Resetn Posts
       </h2>
       <div class="flex flex-col gap-5">
-        <ResentPost v-for="post in resentPosts" :resent-post="post" />
+        <ResentPost
+          v-for="post in resentPosts"
+          :key="post.id"
+          :resent-post="post"
+        />
       </div>
     </div>
   </div>
@@ -34,4 +42,6 @@ const { data: featuredPosts } = await useAsyncData("featured-posts", () => {
 const { data: resentPosts } = await useAsyncData("resent-posts", () => {
   return queryCollection("content").limit(5).all();
 });
+
+console.log(resentPosts.value);
 </script>
