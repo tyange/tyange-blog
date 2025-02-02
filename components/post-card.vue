@@ -1,5 +1,7 @@
 <template>
-  <div class="rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
+  <div
+    class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+  >
     <div class="flex gap-3">
       <span
         v-for="tag in item.tags"
@@ -9,7 +11,7 @@
         {{ tag }}
       </span>
     </div>
-    <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+    <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
       {{ item.title }}
     </h3>
     <p class="mb-4 text-gray-600 dark:text-gray-300">
