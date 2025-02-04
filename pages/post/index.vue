@@ -8,6 +8,9 @@
     >
       <LoaderCircle :size="50" class="animate-spin" />
     </div>
+    <div class="flex items-center justify-center">
+      <Dot :size="50" />
+    </div>
   </div>
 </template>
 
@@ -17,7 +20,7 @@ import { useIntersectionObserver } from "@vueuse/core";
 
 import Post from "~/components/post-card.vue";
 
-import { LoaderCircle } from "lucide-vue-next";
+import { LoaderCircle, Dot } from "lucide-vue-next";
 
 const limitter = ref(5);
 const loader = ref<HTMLElement | null>(null);
