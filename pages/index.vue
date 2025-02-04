@@ -14,7 +14,7 @@
     </div>
     <div>
       <h2 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-        Resetn Posts
+        Resent Posts
       </h2>
       <div class="flex flex-col gap-5">
         <PostCard v-for="item in resentPostList" :key="item.id" :item="item" />
