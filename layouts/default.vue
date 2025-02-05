@@ -1,8 +1,27 @@
 <template>
-  <TheNav />
-  <slot />
+  <div class="drawer">
+    <input
+      id="my-drawer-3"
+      type="checkbox"
+      class="drawer-toggle"
+      :checked="isSidebarOpen"
+    />
+    <div class="drawer-content">
+      <Header />
+      <main>
+        <slot />
+      </main>
+    </div>
+    <Sidebar />
+  </div>
 </template>
 
 <script setup lang="ts">
-import TheNav from "~/components/ui/the-nav.vue";
+import Header from "~/components/ui/header.vue";
+import Sidebar from "~/components/ui/sidebar.vue";
+
+import { useSidebarStore } from "~/stores/sidebar";
+
+const sidebarStore = useSidebarStore();
+const { isOpen: isSidebarOpen } = storeToRefs(sidebarStore);
 </script>
