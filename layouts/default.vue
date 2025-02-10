@@ -8,9 +8,7 @@
     />
     <div class="drawer-content">
       <Header />
-      <main>
-        <slot />
-      </main>
+      <slot />
     </div>
     <Sidebar />
   </div>

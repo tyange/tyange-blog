@@ -18,22 +18,17 @@
         </details>
         <a class="text-2xl font-extrabold sm:text-3xl">tyange blog</a>
       </div>
-      <div class="flex place-content-end items-center gap-5">
-        <label class="input w-40 sm:w-auto">
-          <Search />
-          <input type="search" class="grow" placeholder="Search" />
-          <kbd class="kbd kbd-sm">⌘</kbd>
-          <kbd class="kbd kbd-sm">K</kbd>
-        </label>
-      </div>
+      <SearchConsole />
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
-import { Menu, Search } from "lucide-vue-next";
+import { Menu } from "lucide-vue-next";
 
 import { useSidebarStore } from "~/stores/sidebar";
+
+import SearchConsole from "~/components/search-input.vue";
 
 const sidebarStore = useSidebarStore();
 
