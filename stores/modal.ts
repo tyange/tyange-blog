@@ -24,7 +24,6 @@ export const useModalStore = defineStore("modal", {
     openModal(modalId: string) {
       this.id = modalId;
       this.isOpen = true;
-      console.log(modalId);
       document.body.style.overflow = "hidden";
     },
     closeModal() {

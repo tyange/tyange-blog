@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
-          theme: "github-light",
+          theme: "catppuccin-latte",
           langs: ["rust", "go", "python"],
         },
       },

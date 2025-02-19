@@ -21,23 +21,13 @@
       </div>
     </div>
   </div>
-  <Modal modal-id="search-console">
-    <SearchConsole />
-  </Modal>
 </template>
 
 <script setup lang="ts">
-import { useModalStore } from "~/stores/modal";
 import { SELECTION } from "~/constants/selection";
 
 import FeaturedPost from "~/components/featured-post.vue";
 import PostCard from "~/components/post-card.vue";
-import Modal from "~/components/modal/modal.vue";
-import SearchConsole from "~/components/modal/modal-inner/search-console.vue";
-
-const modalStore = useModalStore();
-
-const { control, command, k } = useMagicKeys();
 
 // TODO: 현재 @nuxt/content 모듈이 내부적으로 사용 중인 SQLite 관련 코드에서 오류가 있음.
 // 아래 where 메서드에 boolean 값을 인자로 넘길 수 있으나, parsing 과정에서 SQLite에서 인식 가능한 0, 1로 변환되지 않음.
@@ -55,11 +45,5 @@ const { data: resentPostList } = await useAsyncData("resent-posts", () => {
     .limit(5)
     .select(...SELECTION)
     .all();
-});
-
-watchEffect(() => {
-  if ((control.value && k.value) || (command.value && k.value)) {
-    modalStore.openModal("search-console");
-  }
 });
 </script>

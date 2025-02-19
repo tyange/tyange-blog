@@ -11,9 +11,7 @@
     @close="closeModal"
   >
     <div class="relative flex h-screen w-screen items-center justify-center">
-      <div class="relative h-fit w-fit">
-        <slot />
-      </div>
+      <slot />
     </div>
   </dialog>
 </template>
