@@ -25,7 +25,7 @@
           v-for="item in result"
           class="rounded-md border border-gray-300 p-3 shadow-sm"
         >
-          <NuxtLink :to="item.id">
+          <NuxtLink :to="item.id" @click="modalStore.closeModal">
             <div class="text-slate-600">
               <span>
                 <template
