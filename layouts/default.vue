@@ -1,11 +1,6 @@
 <template>
   <div class="drawer">
-    <input
-      id="my-drawer-3"
-      type="checkbox"
-      class="drawer-toggle"
-      :checked="isSidebarOpen"
-    />
+    <input type="checkbox" class="drawer-toggle" :checked="isSidebarOpen" />
     <div class="drawer-content">
       <Header />
       <slot />

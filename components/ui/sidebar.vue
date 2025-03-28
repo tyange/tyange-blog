@@ -1,7 +1,6 @@
 <template>
   <div class="drawer-side">
     <div
-      for="my-drawer-3"
       aria-label="close sidebar"
       class="drawer-overlay"
       @click="sidebarStore.toggle"
