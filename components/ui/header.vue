@@ -23,7 +23,7 @@
         </div>
         <a class="text-2xl font-extrabold sm:text-3xl">tyange blog</a>
       </div>
-      <SearchConsole />
+<!--      <SearchConsole />-->
     </nav>
   </header>
 </template>
