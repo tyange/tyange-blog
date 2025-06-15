@@ -15,11 +15,11 @@ import SearchConsole from "~/components/modal/modal-inner/search-console.vue";
 
 const modalStore = useModalStore();
 
-const { control, k } = useMagicKeys();
-
-watchEffect(() => {
-  if ((control.value && k.value) || (control.value && k.value)) {
-    modalStore.openModal("search-console");
-  }
-});
+// const { control, k } = useMagicKeys();
+//
+// watchEffect(() => {
+//   if ((control.value && k.value) || (control.value && k.value)) {
+//     modalStore.openModal("search-console");
+//   }
+// });
 </script>
