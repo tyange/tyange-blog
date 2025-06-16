@@ -1,12 +1,14 @@
-export const MENUS = [
+import type { Menu } from "~/types/menu.types";
+
+export const MENUS: Menu[] = [
   {
     id: "home",
-    url: "/",
+    path: "/",
     name: "홈",
   },
   {
     id: "all-post",
-    url: "/posts",
+    path: "/posts",
     name: "모든 글",
   },
-] as const;
+];
