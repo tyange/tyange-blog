@@ -10,9 +10,9 @@
             <CircleHelp />
           </div>
           <div tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-5 text-center shadow-sm">
-            <a href="mailto:usun16@gmail.com">usun16@gmail.com</a>
+            <a href="mailto:usun16@gmail.com" class="btn btn-link">usun16@gmail.com</a>
             <div class="mt-3 flex justify-center gap-5">
-              <button class="h-5 w-5 cursor-pointer">
+              <button class="h-5 w-5 cursor-pointer" @click="handleNavigateTo(githubUrl, true)">
                 <svg role="img" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub</title>
                   <path
@@ -20,7 +20,7 @@
                   />
                 </svg>
               </button>
-              <button class="h-5 w-5 cursor-pointer">
+              <button class="h-5 w-5 cursor-pointer" @click="handleNavigateTo(twitterUrl, true)">
                 <svg role="img" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                   <title>X</title>
                   <path
@@ -37,5 +37,11 @@
 </template>
 
 <script setup lang="ts">
-import { CircleHelp, Github, Twitter } from 'lucide-vue-next';
+import { CircleHelp } from 'lucide-vue-next';
+
+import { githubUrl, twitterUrl } from '~/constants/my-info';
+
+const handleNavigateTo = async (url: string, isExternal: boolean) => {
+  await navigateTo(url, { external: isExternal });
+};
 </script>
