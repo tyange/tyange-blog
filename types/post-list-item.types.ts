@@ -1,6 +1,8 @@
-import type { ContentCollectionItem } from "@nuxt/content";
-
-export type PostListItem = Pick<
-  ContentCollectionItem,
-  "id" | "date" | "featured" | "tags" | "title" | "description"
->;
+export interface PostListItem {
+  post_id: string;
+  title: string;
+  description: string;
+  published_at: string;
+  tags: string[];
+  content: string;
+}
