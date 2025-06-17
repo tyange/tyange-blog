@@ -1,10 +1,6 @@
 <template>
-  <div class="mb-12 flex flex-col gap-6">
-    <div>
-      <div class="flex flex-col gap-5">
-        <PostCard v-for="item in postList" :key="item.post_id" :item="item" />
-      </div>
-    </div>
+  <div class="mb-12 flex w-full flex-col gap-5">
+    <PostCard v-for="item in postList" :key="item.post_id" :item="item" />
   </div>
 </template>
 

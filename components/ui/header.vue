@@ -1,6 +1,6 @@
 <template>
   <header class="flex w-full justify-center shadow-sm">
-    <nav class="navbar bg-base-100 grid max-w-4xl grid-cols-2 sm:px-11">
+    <nav class="navbar bg-base-100 grid max-w-3xl grid-cols-2 p-4 sm:p-0">
       <div class="flex flex-1 place-content-start items-center gap-3 sm:gap-5">
         <NuxtLink class="text-2xl font-extrabold sm:text-3xl" to="/">tyange blog</NuxtLink>
       </div>
