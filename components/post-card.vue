@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
-  >
+  <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
     <div class="flex gap-3">
       <span
         v-for="tag in item.tags"
@@ -18,13 +16,13 @@
       {{ item.description }}
     </p>
     <div class="text-sm text-gray-500 dark:text-gray-400">
-      {{ item.date }}
+      {{ item.published_at }}
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { PostListItem } from "~/types/post-list-item.types";
+import type { PostListItem } from '~/types/post-list-item.types';
 
 defineProps<{ item: PostListItem }>();
 </script>
