@@ -3,9 +3,7 @@
     <article class="prose max-w-3xl flex-1">
       <header class="mb-8">
         <div class="mb-4 flex items-center gap-2">
-          <time class="text-sm text-gray-500 dark:text-gray-400">{{
-            post.date
-          }}</time>
+          <time class="text-sm text-gray-500 dark:text-gray-400">{{ post.published_at }}</time>
         </div>
         <h1 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
           {{ post.title }}
@@ -34,10 +32,20 @@
 </template>
 
 <script setup lang="ts">
+import type { PostListItem } from '~/types/post-list-item.types';
+
 const route = useRoute();
 const slug = route.params.slug;
 
-const { data: post } = await useAsyncData(`post-${slug}`, () => {
-  return queryCollection("content").path(`/post/${slug}`).first();
+const { data } = await useFetch<PostListItem>(`https://tyange.hopto.org/cms/post/${slug}`, {
+  server: false
+});
+
+const post = computed(() => {
+  if (!data?.value) {
+    return null;
+  }
+
+  return data.value;
 });
 </script>

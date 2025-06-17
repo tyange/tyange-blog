@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+  <div
+    class="w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+  >
     <div class="flex gap-3">
       <span
         v-for="tag in item.tags"

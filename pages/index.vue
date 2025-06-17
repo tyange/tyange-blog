@@ -1,6 +1,6 @@
 <template>
   <div class="mb-12 flex w-full flex-col gap-5">
-    <PostCard v-for="item in postList" :key="item.post_id" :item="item" />
+    <PostCard v-for="item in postList" :key="item.post_id" :item="item" @click="handleNavigateToPost(item.post_id)" />
   </div>
 </template>
 
@@ -19,4 +19,8 @@ const postList = computed<PostListItem[]>(() => {
 
   return data.value.data.posts;
 });
+
+const handleNavigateToPost = async (postId: string) => {
+  await navigateTo(`/post/${postId}`);
+};
 </script>
