@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <main class="mx-auto mt-6 max-w-4xl px-4 sm:px-12 lg:px-14">
+    <main class="mx-auto mt-6 max-w-3xl p-4 sm:p-0">
       <NuxtPage />
     </main>
     <Modal modal-id="search-console">
@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import Modal from "~/components/modal/modal.vue";
-import SearchConsole from "~/components/modal/modal-inner/search-console.vue";
+import Modal from '~/components/modal/modal.vue';
+import SearchConsole from '~/components/modal/modal-inner/search-console.vue';
 
 const modalStore = useModalStore();
 
