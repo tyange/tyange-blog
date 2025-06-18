@@ -13,7 +13,7 @@
         </p>
       </header>
       <ContentRenderer :value="post" />
-      <footer class="mt-12 border-t border-gray-200 pt-8 dark:border-gray-700">
+      <footer class="mt-8 border-t border-gray-200 pt-8 dark:border-gray-700">
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tag in post.tags"
