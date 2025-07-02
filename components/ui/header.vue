@@ -1,8 +1,20 @@
+<script setup lang="ts">
+import { CircleHelp } from 'lucide-vue-next'
+
+import { githubUrl, twitterUrl } from '~/constants/my-info'
+
+async function handleNavigateTo(url: string, isExternal: boolean) {
+  await navigateTo(url, { external: isExternal })
+}
+</script>
+
 <template>
   <header class="flex w-full justify-center shadow-sm">
     <nav class="navbar bg-base-100 grid max-w-3xl grid-cols-2 p-4 sm:p-0">
       <div class="flex flex-1 place-content-start items-center gap-3 sm:gap-5">
-        <NuxtLink class="text-2xl font-extrabold sm:text-3xl" to="/">tyange blog</NuxtLink>
+        <NuxtLink class="text-2xl font-extrabold sm:text-3xl" to="/">
+          tyange blog
+        </NuxtLink>
       </div>
       <div class="flex justify-end">
         <div class="dropdown dropdown-bottom dropdown-end">
@@ -35,13 +47,3 @@
     </nav>
   </header>
 </template>
-
-<script setup lang="ts">
-import { CircleHelp } from 'lucide-vue-next';
-
-import { githubUrl, twitterUrl } from '~/constants/my-info';
-
-const handleNavigateTo = async (url: string, isExternal: boolean) => {
-  await navigateTo(url, { external: isExternal });
-};
-</script>

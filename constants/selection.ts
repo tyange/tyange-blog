@@ -1,8 +1,8 @@
 export const SELECTION = [
-  "id",
-  "date",
-  "featured",
-  "tags",
-  "title",
-  "description",
-] as const;
+  'id',
+  'date',
+  'featured',
+  'tags',
+  'title',
+  'description',
+] as const

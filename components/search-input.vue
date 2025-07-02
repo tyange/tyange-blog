@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import { Search } from 'lucide-vue-next'
+</script>
+
 <template>
   <div class="flex place-content-end items-center gap-5">
     <label class="input w-40 sm:w-auto">
@@ -8,7 +12,3 @@
     </label>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { Search } from "lucide-vue-next";
-</script>
