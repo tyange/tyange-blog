@@ -1,4 +1,46 @@
-﻿<template>
+<script lang="ts" setup>
+import { Eye, EyeClosed, X } from 'lucide-vue-next'
+import MiniSearch from 'minisearch'
+
+import { useModalStore } from '~/stores/modal'
+
+const modalStore = useModalStore()
+
+const enteredKeyword = ref('')
+
+const isInit = computed(() => enteredKeyword.value === '')
+
+const { data: searchResult } = await useAsyncData('search-sections', () => {
+  return queryCollectionSearchSections('content', {
+    ignoredTags: ['pre', 'code', 'style'],
+  })
+})
+
+const miniSearch = new MiniSearch({
+  fields: ['content'],
+  storeFields: ['id', 'content'],
+  searchOptions: {
+    prefix: true,
+    fuzzy: 0.2,
+  },
+})
+
+miniSearch.addAll(searchResult.value ?? [])
+const result = computed(() => {
+  return miniSearch.search(enteredKeyword.value)
+})
+
+function highlightText(text: string, terms: string[]) {
+  const pattern = new RegExp(`(${terms.join('|')})`, 'g')
+  const result = text.split(pattern)
+  return result.map(r => ({
+    marked: terms.includes(r),
+    text: r,
+  }))
+}
+</script>
+
+<template>
   <div
     class="relative flex h-120 w-5/6 max-w-150 flex-col rounded-xl bg-white shadow-lg"
   >
@@ -13,11 +55,11 @@
     </div>
     <div class="z-20 flex w-full items-center justify-center px-5 pt-5 pb-5">
       <input
+        v-model="enteredKeyword"
         type="text"
         placeholder="블로그 글 검색하기..."
         class="w-5/6 rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        v-model="enteredKeyword"
-      />
+      >
     </div>
     <div class="z-20 flex-1 overflow-auto pr-5 pb-5 pl-5">
       <ul class="flex flex-col gap-3">
@@ -42,45 +84,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { EyeClosed, Eye, X } from "lucide-vue-next";
-import MiniSearch from "minisearch";
-
-import { useModalStore } from "~/stores/modal";
-
-const modalStore = useModalStore();
-
-const enteredKeyword = ref("");
-
-const isInit = computed(() => enteredKeyword.value === "");
-
-const { data: searchResult } = await useAsyncData("search-sections", () => {
-  return queryCollectionSearchSections("content", {
-    ignoredTags: ["pre", "code", "style"],
-  });
-});
-
-const miniSearch = new MiniSearch({
-  fields: ["content"],
-  storeFields: ["id", "content"],
-  searchOptions: {
-    prefix: true,
-    fuzzy: 0.2,
-  },
-});
-
-miniSearch.addAll(searchResult.value ?? []);
-const result = computed(() => {
-  return miniSearch.search(enteredKeyword.value);
-});
-
-const highlightText = (text: string, terms: string[]) => {
-  const pattern = new RegExp(`(${terms.join("|")})`, "g");
-  const result = text.split(pattern);
-  return result.map((r) => ({
-    marked: terms.includes(r),
-    text: r,
-  }));
-};
-</script>

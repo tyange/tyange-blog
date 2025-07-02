@@ -1,3 +1,22 @@
+<script setup lang="ts">
+import type { PostListItem } from '~/types/post-list-item.types'
+
+const route = useRoute()
+const slug = route.params.slug
+
+const { data } = await useFetch<PostListItem>(`https://tyange.hopto.org/cms/post/${slug}`, {
+  server: false,
+})
+
+const post = computed(() => {
+  if (!data?.value) {
+    return null
+  }
+
+  return data.value
+})
+</script>
+
 <template>
   <div v-if="post">
     <article class="prose max-w-3xl flex-1">
@@ -30,22 +49,3 @@
     <p>게시글을 찾을 수 없습니다.</p>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { PostListItem } from '~/types/post-list-item.types';
-
-const route = useRoute();
-const slug = route.params.slug;
-
-const { data } = await useFetch<PostListItem>(`https://tyange.hopto.org/cms/post/${slug}`, {
-  server: false
-});
-
-const post = computed(() => {
-  if (!data?.value) {
-    return null;
-  }
-
-  return data.value;
-});
-</script>

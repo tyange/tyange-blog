@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import type { PostListItem } from '~/types/post-list-item.types'
+
+defineProps<{ item: PostListItem }>()
+</script>
+
 <template>
   <div class="rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
     <div class="flex gap-3">
@@ -16,13 +22,7 @@
       {{ item.description }}
     </p>
     <div class="text-sm text-gray-500 dark:text-gray-400">
-      {{ item.date }}
+      {{ item.published_at }}
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { PostListItem } from "~/types/post-list-item.types";
-
-defineProps<{ item: PostListItem }>();
-</script>

@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap');
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
 
-:where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+:where(pre):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
   background-color: #fff;
   box-shadow:
     rgba(0, 0, 0, 0.16) 0px 3px 6px,
@@ -15,5 +15,5 @@ html {
 }
 
 @theme {
-  --font-serif: "Noto Serif KR", sans-serif;
+  --font-serif: 'Noto Serif KR', sans-serif;
 }

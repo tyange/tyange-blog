@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import type { PostListItem } from '~/types/post-list-item.types'
+
+defineProps<{ item: PostListItem }>()
+</script>
+
 <template>
   <div
     class="w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
@@ -22,9 +28,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { PostListItem } from '~/types/post-list-item.types';
-
-defineProps<{ item: PostListItem }>();
-</script>
