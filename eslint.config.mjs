@@ -6,6 +6,7 @@ export default withNuxt(
   antfu({
     vue: true,
     typescript: true,
+    jsonc: true,
     formatters: {
       css: true,
       html: true,
