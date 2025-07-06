@@ -4,7 +4,9 @@ import type { PostListItem } from '~/types/post-list-item.types'
 import type { CMSResponse } from '~/types/response.types'
 import PostCard from '~/components/post-card.vue'
 
-const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>('https://tyange.hopto.org/cms/posts')
+const config = useRuntimeConfig()
+
+const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>(`${config.public.tyangeCmsApiBase}/posts`)
 
 const postList = computed<PostListItem[]>(() => {
   if (!data?.value) {
