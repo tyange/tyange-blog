@@ -1,3 +1,43 @@
+# name: deploy tyange-blog on tyange home server
+# on:
+#   push:
+#     branches: [master]
+#   pull_request:
+#     branches: [master]
+#   workflow_dispatch:
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     environment: tyange-home-server
+#     steps:
+#       - name: Deploy to home server
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           port: ${{ secrets.SSH_PORT }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           debug: true
+#           script: |
+#             cd ${{ vars.SERVICE_PATH }}
+
+#             if [ ! -d ".git" ]; then
+#               git init
+#               git remote add origin https://github.com/tyange/tyange-blog.git
+#             fi
+
+#             git fetch origin
+#             git reset --hard origin/master
+#             pnpm install --frozen-lockfile
+#             pnpm run build
+
+#             mkdir -p logs
+
+#             pm2 restart ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
+
+#             pm2 list
+#             pm2 logs tyange-blog --lines 5
+
 name: deploy tyange-blog on tyange home server
 on:
   push:
@@ -11,7 +51,7 @@ jobs:
     environment: tyange-home-server
     steps:
       - name: Deploy to home server
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -19,21 +59,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           debug: true
           script: |
-            cd ${{ vars.SERVICE_PATH }}
-
-            if [ ! -d ".git" ]; then
-              git init
-              git remote add origin https://github.com/tyange/tyange-blog.git
-            fi
-
-            git fetch origin
-            git reset --hard origin/master
-            pnpm install --frozen-lockfile
-            pnpm run build
-
-            mkdir -p logs
-
-            pm2 restart ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
-
-            pm2 list
-            pm2 logs tyange-blog --lines 5
+            echo "SSH connection successful!"
+            whoami
+            pwd
+            ls -la
