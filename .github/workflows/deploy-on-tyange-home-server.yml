@@ -17,6 +17,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            bash -l -c '
             cd /home/tyange/dev/deploy/tyange-blog
 
             source ~/.bashrc
@@ -42,3 +43,4 @@ jobs:
             pm2 restart ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
             pm2 list
             pm2 logs ***-blog --lines 5
+            '
