@@ -3,7 +3,7 @@
 
 <template>
   <NuxtLayout>
-    <main class="mx-auto mt-6 max-w-3xl p-4 sm:p-0">
+    <main class="mx-auto my-6 max-w-3xl p-4 sm:p-0">
       <NuxtPage />
     </main>
   </NuxtLayout>
