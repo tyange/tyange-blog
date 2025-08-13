@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/tyange/dev/deploy/tyange-blog
+            cd ${{ vars.SERVICE_PATH }}
 
             if [ ! -d ".git" ]; then
               git init
@@ -34,7 +34,3 @@ jobs:
 
             pm2 list
             pm2 logs tyange-blog --lines 5
-          envs: |
-            NITRO_PORT=${{ vars.PORT }}
-            NODE_ENV=production
-            NUXT_PUBLIC_TYANGE_CMS_API_BASE=${{ vars.NUXT_PUBLIC_TYANGE_CMS_API_BASE }}
