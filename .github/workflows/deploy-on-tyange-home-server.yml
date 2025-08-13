@@ -1,24 +1,31 @@
 name: deploy tyange-blog on tyange home server
+
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
-  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy to home server
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          debug: true
           script: |
-            cd ${{ vars.SERVICE_PATH }}
+            cd /home/tyange/dev/deploy/tyange-blog
+
+            source ~/.bashrc
+            source ~/.profile
+
+            echo "Current PATH: $PATH"
+            which node
+            which pnpm
+            which pm2
 
             if [ ! -d ".git" ]; then
               git init
@@ -33,6 +40,5 @@ jobs:
             mkdir -p logs
 
             pm2 restart ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
-
             pm2 list
-            pm2 logs tyange-blog --lines 5
+            pm2 logs ***-blog --lines 5
