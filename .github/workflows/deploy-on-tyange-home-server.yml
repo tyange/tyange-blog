@@ -4,57 +4,37 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment: tyange-home-server
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Deploy to home server
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          node-version: '20'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/tyange/dev/deploy/tyange-blog
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+            if [ ! -d ".git" ]; then
+              git init
+              git remote add origin https://github.com/tyange/tyange-blog.git
+            fi
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+            git fetch origin
+            git reset --hard origin/master
+            pnpm install --frozen-lockfile
+            pnpm run build
 
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            mkdir -p logs
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+            pm2 restart ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
 
-      - name: Build
-        run: pnpm run build
-
-      - name: Move files to service location
-        run: |
-          rsync -av --exclude=logs .output/ /home/tyange/dev/deploy/tyange-blog/
-
-      - name: Deploy with PM2
-        run: |
-          cd /home/tyange/dev/deploy/tyange-blog/server
-          pm2 restart tyange-blog || pm2 start index.mjs \
-            --name tyange-blog \
-            --log ../logs/combined.log \
-            --out ../logs/out.log \
-            --error ../logs/error.log \
-            --time
-          pm2 list
-          pm2 logs tyange-blog --lines 5
-        env:
-          NITRO_PORT: ${{ vars.PORT }}
-          NODE_ENV: production
-          NUXT_PUBLIC_TYANGE_CMS_API_BASE: ${{ vars.NUXT_PUBLIC_TYANGE_CMS_API_BASE }}
+            pm2 list
+            pm2 logs tyange-blog --lines 5
+          envs: |
+            NITRO_PORT=${{ vars.PORT }}
+            NODE_ENV=production
+            NUXT_PUBLIC_TYANGE_CMS_API_BASE=${{ vars.NUXT_PUBLIC_TYANGE_CMS_API_BASE }}
