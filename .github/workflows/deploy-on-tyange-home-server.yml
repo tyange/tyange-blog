@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: tyange-home-server
     environment: tyange-home-server
     steps:
       - uses: actions/checkout@v4
