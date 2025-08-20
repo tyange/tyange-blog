@@ -1,7 +1,7 @@
 export default {
   apps: [{
     name: 'tyange-blog',
-    script: '.output/server/index.mjs',
+    script: '/home/tyange/dev/deploy/tyange-blog/.output/server/index.mjs',
     cwd: '/home/tyange/dev/deploy/tyange-blog',
     instances: 1,
     exec_mode: 'fork',
