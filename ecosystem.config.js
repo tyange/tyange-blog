@@ -7,9 +7,9 @@ module.exports = {
     exec_mode: 'fork',
     env: {
       NODE_ENV: 'production',
-      NITRO_PORT: process.env.NITRO_PORT || 3000,
-      NUXT_PUBLIC_TYANGE_CMS_API_BASE: process.env.NUXT_PUBLIC_TYANGE_CMS_API_BASE,
+      NITRO_PORT: 3000,
     },
+    env_file: '.env',
     log_file: './logs/combined.log',
     out_file: './logs/out.log',
     error_file: './logs/error.log',
