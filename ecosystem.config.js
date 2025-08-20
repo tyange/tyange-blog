@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   apps: [{
     name: 'tyange-blog',
     script: '.output/server/index.mjs',
