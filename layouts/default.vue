@@ -6,13 +6,16 @@ import { useSidebarStore } from '~/stores/sidebar'
 
 const sidebarStore = useSidebarStore()
 const { isOpen: isSidebarOpen } = storeToRefs(sidebarStore)
+
+const el = useTemplateRef<HTMLElement>('el')
+const { isScrolling } = useScroll(el)
 </script>
 
 <template>
   <div class="drawer">
     <input type="checkbox" class="drawer-toggle" :checked="isSidebarOpen">
-    <div class="drawer-content">
-      <Header />
+    <div ref="el" class="drawer-content h-screen overflow-scroll">
+      <Header :is-scrolling="isScrolling" />
       <slot />
     </div>
     <Sidebar />
