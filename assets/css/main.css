@@ -10,9 +10,7 @@
 }
 
 html {
-  font-family: var(--font-serif);
-}
-
-@theme {
-  --font-serif: 'Noto Serif KR', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard Variable', Pretendard, Roboto, 'Noto Sans KR',
+    'Segoe UI', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }

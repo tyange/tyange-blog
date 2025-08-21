@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/mdc'],
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css'],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -31,7 +31,16 @@ export default defineNuxtConfig({
       theme: 'github-dark',
     },
     components: {
-      prose: false,
+      prose: true,
     },
+  },
+  components: {
+    global: true,
+    dirs: [
+      {
+        path: '~/components/prose',
+        global: true,
+      },
+    ],
   },
 })
