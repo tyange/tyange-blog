@@ -1,7 +1,13 @@
+/* eslint-ignore */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap');
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark,
+    lofi;
+}
 
 html {
   font-family: var(--font-serif);

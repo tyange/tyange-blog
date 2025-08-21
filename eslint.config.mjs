@@ -12,5 +12,8 @@ export default withNuxt(
       html: true,
       markdown: 'prettier',
     },
+    rules: {
+      'no-alert': 'off',
+    },
   }),
 )

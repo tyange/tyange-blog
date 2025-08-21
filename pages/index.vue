@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { PostListItem } from '~/types/post-list-item.types'
-
 import type { CMSResponse } from '~/types/response.types'
 import PostCard from '~/components/post-card.vue'
 
