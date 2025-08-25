@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { Menu } from 'lucide-vue-next'
 import { githubUrl } from '~/constants/my-info'
 
 defineProps<{ isScrolling: boolean }>()
+
+const sidebarStore = useSidebarStore()
+
 async function handleNavigateTo(url: string, isExternal: boolean) {
   await navigateTo(url, { external: isExternal })
 }
@@ -17,13 +21,13 @@ async function handleNavigateTo(url: string, isExternal: boolean) {
   >
     <nav class="navbar bg-base-100 w-full max-w-3xl p-4 sm:p-0">
       <div class="flex justify-between items-center w-full">
-        <NuxtLink
+        <button
           class="text-xl font-extrabold sm:text-3xl transition-all duration-300 whitespace-nowrap shrink-0 leading-1"
           :class="{ 'scale-95': isScrolling }"
-          to="/"
+          @click="sidebarStore.toggle"
         >
-          tyange blog
-        </NuxtLink>
+          <Menu />
+        </button>
         <div class="flex items-center text-xs sm:text-sm w-fit font-normal">
           <span class="whitespace-nowrap">© {{ new Date().getFullYear() }} <span>tyange</span></span>
           <div class="divider divider-horizontal m-0" />

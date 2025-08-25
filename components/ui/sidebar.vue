@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSidebarStore } from '~/stores/sidebar'
+import { House } from 'lucide-vue-next'
 
 const sidebarStore = useSidebarStore()
 </script>
@@ -12,8 +12,11 @@ const sidebarStore = useSidebarStore()
       @click="sidebarStore.toggle"
     />
     <ul class="menu bg-base-200 min-h-full w-80 p-4">
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
+      <li>
+        <NuxtLink to="/">
+          <House />
+        </NuxtLink>
+      </li>
     </ul>
   </div>
 </template>
