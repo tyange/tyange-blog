@@ -12,7 +12,7 @@ const { isScrolling } = useScroll(el)
 <template>
   <div class="drawer">
     <input type="checkbox" class="drawer-toggle" :checked="isSidebarOpen">
-    <div ref="el" class="drawer-content h-screen overflow-scroll">
+    <div ref="el" class="drawer-content">
       <Header :is-scrolling="isScrolling" />
       <slot />
     </div>
