@@ -2,8 +2,6 @@
 import Header from '~/components/ui/header.vue'
 import Sidebar from '~/components/ui/sidebar.vue'
 
-import { useSidebarStore } from '~/stores/sidebar'
-
 const sidebarStore = useSidebarStore()
 const { isOpen: isSidebarOpen } = storeToRefs(sidebarStore)
 
