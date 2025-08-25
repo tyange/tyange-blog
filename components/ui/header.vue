@@ -2,8 +2,6 @@
 import { Menu } from 'lucide-vue-next'
 import { githubUrl } from '~/constants/my-info'
 
-defineProps<{ isScrolling: boolean }>()
-
 const sidebarStore = useSidebarStore()
 
 async function handleNavigateTo(url: string, isExternal: boolean) {
@@ -13,17 +11,12 @@ async function handleNavigateTo(url: string, isExternal: boolean) {
 
 <template>
   <header
-    class="flex w-full justify-center bg-base-100 transition-all duration-500 ease-in-out"
-    :class="{
-      '-translate-y-full opacity-0 blur-sm': isScrolling,
-      'translate-y-0 opacity-100 blur-none': !isScrolling,
-    }"
+    class="flex w-full justify-center bg-base-100"
   >
     <nav class="navbar bg-base-100 w-full max-w-3xl p-4 sm:p-0">
       <div class="flex justify-between items-center w-full">
         <button
           class="text-xl font-extrabold sm:text-3xl transition-all duration-300 whitespace-nowrap shrink-0 leading-1"
-          :class="{ 'scale-95': isScrolling }"
           @click="sidebarStore.toggle"
         >
           <Menu />
