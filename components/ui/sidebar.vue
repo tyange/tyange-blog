@@ -6,15 +6,16 @@ const sidebarStore = useSidebarStore()
 
 <template>
   <div class="drawer-side">
-    <div
-      aria-label="close sidebar"
-      class="drawer-overlay"
-      @click="sidebarStore.toggle"
-    />
+    <div aria-label="close sidebar" class="drawer-overlay" @click="sidebarStore.toggle" />
     <ul class="menu bg-base-200 min-h-full w-80 p-4">
       <li>
         <NuxtLink to="/">
-          <House />
+          <span>
+            <House />
+          </span>
+          <span class="ml-5">
+            홈
+          </span>
         </NuxtLink>
       </li>
     </ul>
