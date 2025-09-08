@@ -16,7 +16,7 @@ async function handleNavigateTo(url: string, isExternal: boolean) {
     <nav class="navbar bg-base-100 w-full max-w-3xl p-4 sm:p-0">
       <div class="flex justify-between items-center w-full">
         <button
-          class="text-xl font-extrabold sm:text-3xl transition-all duration-300 whitespace-nowrap shrink-0 leading-1"
+          class="text-xl font-extrabold sm:text-3xl transition-all duration-300 whitespace-nowrap shrink-0 leading-1 cursor-pointer"
           @click="sidebarStore.toggle"
         >
           <Menu />
