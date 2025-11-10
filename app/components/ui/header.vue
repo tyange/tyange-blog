@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Menu } from 'lucide-vue-next'
-import { githubUrl } from '~/constants/my-info'
+import { githubUrl } from '~~/shared/constants/my-info'
 
 const sidebarStore = useSidebarStore()
 

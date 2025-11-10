@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostListItem } from '~/types/post-list-item.types'
+import type { PostListItem } from '~~/shared/types/post-list-item.types'
 
 defineProps<{ item: PostListItem }>()
 </script>
