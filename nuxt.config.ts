@@ -11,6 +11,13 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
+      script: [
+        {
+          'defer': true,
+          'src': 'https://umami.tyange.xyz/script.js',
+          'data-website-id': 'f885586c-edcb-4a88-8c78-08bf76c5adb8',
+        },
+      ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
