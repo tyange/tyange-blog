@@ -55,4 +55,8 @@ export default defineNuxtConfig({
       },
     ],
   },
+  routeRules: {
+    '/': { swr: 60 },
+    '/post/**': { swr: 3600 },
+  },
 })
