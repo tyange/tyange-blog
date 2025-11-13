@@ -47,7 +47,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/mdc',
     '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
   ],
   css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css'],
   vite: {
