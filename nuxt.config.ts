@@ -27,6 +27,9 @@ export default defineNuxtConfig({
     description: 'tyange의 블로그.',
     defaultLocale: 'ko',
   },
+  devtools: {
+    enabled: true,
+  },
   sitemap: {
     sources: [
       '/api/__sitemap__/posts',
@@ -38,8 +41,14 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/mdc', '@nuxtjs/sitemap'],
+  modules: [
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@nuxt/eslint',
+    '@nuxtjs/mdc',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+  ],
   css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css'],
   vite: {
     plugins: [tailwindcss()],
