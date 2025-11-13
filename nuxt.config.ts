@@ -21,9 +21,25 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
+  site: {
+    url: 'https://blog.tyange.xyz',
+    name: 'tyange-blog',
+    description: 'tyange의 블로그.',
+    defaultLocale: 'ko',
+  },
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/posts',
+    ],
+    defaults: {
+      changefreq: 'daily',
+      priority: 0.5,
+      lastmod: new Date().toISOString(),
+    },
+  },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/mdc'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/mdc', '@nuxtjs/sitemap'],
   css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css'],
   vite: {
     plugins: [tailwindcss()],
