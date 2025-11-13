@@ -15,7 +15,7 @@ export default defineEventHandler(async () => {
 
     return response.data.posts.map(post => ({
       loc: `/post/${post.post_id}`,
-      lastmod: post.published_at,
+      lastmod: new Date(post.published_at).toISOString(),
       changefreq: 'weekly' as const,
       priority: 0.8,
     }))
