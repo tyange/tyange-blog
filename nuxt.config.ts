@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       '/api/__sitemap__/posts',
     ],
     defaults: {
-      changefreq: 'daily',
+      changefreq: 'always',
       priority: 0.5,
       lastmod: new Date().toISOString(),
     },
