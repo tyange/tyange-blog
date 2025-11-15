@@ -82,7 +82,13 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { swr: 60 },
     '/post/**': { swr: 3600 },
-    '/sitemap.xml': { swr: 0 },
+    '/sitemap.xml': {
+      swr: 0,
+      headers: {
+        'Content-Type': 'application/xml; charset=UTF-8',
+        'Cache-Control': 'public, max-age=600, no-transform',
+      },
+    },
     '/robots.txt': { swr: 0 },
   },
 })
