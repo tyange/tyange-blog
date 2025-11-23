@@ -24,8 +24,9 @@ module.exports = {
       'logs',
       '.git',
     ],
-    restart_delay: 1000,
-    max_restarts: 5,
-    min_uptime: '10s',
+    restart_delay: 0,
+    max_restarts: 10,
+    min_uptime: '5s',
+    autorestart: true,
   }],
 }
