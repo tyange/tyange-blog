@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,11 +36,12 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: ".output/public,.output/server/index.mjs,.output/server/index.mjs.map,.output/server/chunks,.output/server/package.json,.output/nitro.json,ecosystem.config.js"
+          source: ".output,ecosystem.config.js"  # .output 전체 (node_modules 포함)
           target: "/home/ubuntu/dev/deploy/tyange-blog"
           strip_components: 0
+          tar_tmp_path: "/tmp"  # tar 사용 명시
 
-      - name: Install dependencies and restart
+      - name: Restart PM2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
@@ -49,8 +50,6 @@ jobs:
           script: |
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-            cd /home/ubuntu/dev/deploy/tyange-blog/.output/server
-            npm ci --production
-            cd ../..
+            cd /home/ubuntu/dev/deploy/tyange-blog
             pm2 restart tyange-blog || pm2 start ecosystem.config.js
             pm2 save
