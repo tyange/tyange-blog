@@ -3,6 +3,7 @@ name: Deploy Nuxt to Lightsail
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
   deploy:
