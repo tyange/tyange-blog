@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'tyange-blog',
-    script: 'server/index.mjs',
+    script: '.output/server/index.mjs',
     cwd: '/home/ubuntu/dev/deploy/tyange-blog',
     instances: 1,
     exec_mode: 'fork',
