@@ -4,7 +4,7 @@ import type { PostListItem } from '~~/shared/types/post-list-item.types'
 const route = useRoute()
 const slug = route.params.slug
 const config = useRuntimeConfig()
-const { data } = await useFetch<PostListItem>(`/post/${slug}`, { baseURL: import.meta.server ? config.public.tyangeCmsApiBase : '/api/cms' })
+const { data } = await useFetch<PostListItem>(`/post/${slug}`, { baseURL: import.meta.server ? config.public.tyangeCmsApiBase : 'https://tyange.com/api/cms' })
 
 const post = computed(() => {
   if (!data?.value) {
