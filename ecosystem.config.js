@@ -8,6 +8,8 @@ module.exports = {
     env: {
       NODE_ENV: 'production',
       NITRO_PORT: 3000,
+      NITRO_HOST: '0.0.0.0',
+      NUXT_PUBLIC_TYANGE_CMS_API_BASE: 'http://localhost:8080',
     },
     env_file: '.env',
     log_file: './logs/combined.log',
