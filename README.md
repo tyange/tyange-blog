@@ -1,6 +1,6 @@
 # tyange-blog
 
-> 🚀 [https://blog.tyange.xyz](https://blog.tyange.xyz)
+> 🚀 [https://blog.tyange.com](https://blog.tyange.com)
 
 제 블로그입니다.
 
