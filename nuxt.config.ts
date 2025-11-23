@@ -55,7 +55,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      tyangeCmsApiBase: '',
+      tyangeCmsApiBase: import.meta.server
+        ? 'http://localhost:8080'
+        : '/api/cms',
     },
   },
   mdc: {
