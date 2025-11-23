@@ -36,10 +36,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: ".output,ecosystem.config.js"  # .output 전체 (node_modules 포함)
+          source: ".output,ecosystem.config.js"
           target: "/home/ubuntu/dev/deploy/tyange-blog"
           strip_components: 0
-          tar_tmp_path: "/tmp"  # tar 사용 명시
+          debug: true
+          rm: true
 
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.0.3
