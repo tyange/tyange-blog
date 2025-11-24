@@ -14,14 +14,10 @@ const postList = computed<PostListItem[]>(() => {
 
   return data.value.data.posts
 })
-
-async function handleNavigateToPost(postId: string) {
-  await navigateTo(`/post/${postId}`)
-}
 </script>
 
 <template>
   <div class="mb-12 flex w-full flex-col gap-5">
-    <PostCard v-for="item in postList" :key="item.post_id" :item="item" @click="handleNavigateToPost(item.post_id)" />
+    <PostCard v-for="item in postList" :key="item.post_id" :item="item" />
   </div>
 </template>

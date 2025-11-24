@@ -41,7 +41,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxt/eslint',
-    '@nuxtjs/mdc',
     '@nuxtjs/sitemap',
   ],
   css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css'],
@@ -57,23 +56,6 @@ export default defineNuxtConfig({
     public: {
       tyangeCmsApiBase: '',
     },
-  },
-  mdc: {
-    highlight: {
-      theme: 'github-dark',
-    },
-    components: {
-      prose: true,
-    },
-  },
-  components: {
-    global: true,
-    dirs: [
-      {
-        path: '~/components/prose',
-        global: true,
-      },
-    ],
   },
   routeRules: {
     '/': { swr: 60 },
