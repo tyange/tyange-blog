@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { codeToHtml, createHighlighter } from 'shiki'
+
 const props = defineProps<{
   code?: string
   language?: string
@@ -6,9 +8,9 @@ const props = defineProps<{
   highlights?: number[]
 }>()
 
-const highlighted = await useShikiHighlighted(
+const highlighted = await codeToHtml(
   props.code || '',
-  { lang: props.language || 'text', unwrap: true },
+  { lang: props.language ?? 'text', theme: 'dark-plus' },
 )
 </script>
 
@@ -17,7 +19,8 @@ const highlighted = await useShikiHighlighted(
 </template>
 
 <style scoped>
-.prose-pre :deep(code) {
+.prose-pre :deep(code),
+.prose-pre :deep(pre) {
   background-color: transparent !important;
   padding: 0 !important;
   font-family: 'Monaspace Argon', monospace !important;

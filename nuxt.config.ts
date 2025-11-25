@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/sitemap', '@nuxtjs/mdc', 'nuxt-shiki'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/sitemap', '@nuxtjs/mdc'],
   css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css', '~/assets/fonts/monaspace-argon/monaspace-argon.css'],
   vite: {
     plugins: [tailwindcss()],
@@ -61,11 +61,6 @@ export default defineNuxtConfig({
         global: true,
       },
     ],
-  },
-  shiki: {
-    bundledLangs: ['javascript', 'typescript', 'vue', 'css', 'html', 'bash', 'json'],
-    bundledThemes: ['dark-plus'],
-    defaultTheme: 'dark-plus',
   },
   runtimeConfig: {
     public: {
