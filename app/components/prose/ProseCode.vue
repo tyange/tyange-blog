@@ -9,6 +9,6 @@
 
 <style scoped>
 .prose-code {
-  font-family: 'Monaspace Krypton', monospace;
+  font-family: 'Monaspace Argon', monospace;
 }
 </style>

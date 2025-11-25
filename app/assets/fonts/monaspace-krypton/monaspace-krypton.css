@@ -1,9 +1,0 @@
-@font-face {
-  font-family: 'Monaspace Krypton';
-  src:
-    url('./Monaspace-Krypton-Var.woff2') format('woff2-variations'),
-    url('./Monaspace-Krypton-Var.woff') format('woff-variations');
-  font-weight: 200 800;
-  font-stretch: 100% 125%;
-  font-display: swap;
-}
