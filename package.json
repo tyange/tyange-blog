@@ -11,8 +11,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/content": "^3.8.0",
     "@nuxt/eslint": "1.4.1",
+    "@nuxtjs/mdc": "0.18.4",
     "@nuxtjs/sitemap": "7.4.7",
     "@pinia/nuxt": "^0.9.0",
     "@tailwindcss/typography": "^0.5.16",

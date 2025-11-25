@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
   },
   site: {
-    url: 'https://blog.tyange.xyz',
+    url: 'https://blog.tyange.com',
     name: 'tyange-blog',
     description: 'tyange의 블로그.',
     defaultLocale: 'ko',
@@ -37,12 +37,7 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
-  modules: [
-    '@vueuse/nuxt',
-    '@pinia/nuxt',
-    '@nuxt/eslint',
-    '@nuxtjs/sitemap',
-  ],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/eslint', '@nuxtjs/sitemap', '@nuxtjs/mdc'],
   css: ['~/assets/css/main.css', '~/assets/fonts/pretendard/pretendard-subset.css'],
   vite: {
     plugins: [tailwindcss()],
@@ -51,6 +46,23 @@ export default defineNuxtConfig({
     config: {
       standalone: false,
     },
+  },
+  mdc: {
+    highlight: {
+      theme: 'dark-plus',
+    },
+    components: {
+      prose: true,
+    },
+  },
+  components: {
+    global: true,
+    dirs: [
+      {
+        path: '~/components/prose',
+        global: true,
+      },
+    ],
   },
   runtimeConfig: {
     public: {

@@ -84,5 +84,5 @@
     "pcss",
     "postcss"
   ],
-  "oxc.enable": false
+  "biome.enabled": false
 }

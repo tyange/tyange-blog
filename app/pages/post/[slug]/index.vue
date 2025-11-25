@@ -1,30 +1,10 @@
 <script setup lang="ts">
 import type { PostListItem } from '~~/shared/types/post-list-item.types'
-import Shiki from '@shikijs/markdown-it'
-import MarkdownIt from 'markdown-it'
-
-const md = MarkdownIt()
-
-md.use(await Shiki({
-  themes: {
-    light: 'github-dark',
-    dark: 'github-dark',
-  },
-}))
 
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
 
-const { data: post } = await useFetch<PostListItem>(
-  () => `/api/post/${slug.value}`,
-)
-
-const htmlContent = computed(() => {
-  if (!post.value?.content) {
-    return ''
-  }
-  return md.render(post.value.content)
-})
+const { data: post } = await useFetch<PostListItem>(`/api/post/${slug.value}`)
 
 useSeoMeta({
   title: `${post.value?.title} | tyange-blog`,
@@ -50,7 +30,9 @@ useSeoMeta({
           {{ post.description }}
         </p>
       </header>
-      <section v-html="htmlContent" />
+
+      <MDC :value="post.content" tag="section" />
+
       <footer class="mt-8 pt-8">
         <div class="flex flex-wrap gap-2">
           <span
@@ -63,6 +45,7 @@ useSeoMeta({
         </div>
       </footer>
     </article>
+
     <div v-else class="text-base-content/60">
       <p>게시글을 찾을 수 없습니다.</p>
     </div>
