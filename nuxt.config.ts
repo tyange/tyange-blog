@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { swr: 60 },
-    '/post/**': { swr: 3600 },
+    '/': { swr: import.meta.env.PROD ? 60 : false },
+    '/post/**': { swr: import.meta.env.PROD ? 3600 : false },
   },
 })
