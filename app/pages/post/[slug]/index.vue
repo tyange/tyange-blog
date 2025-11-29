@@ -18,7 +18,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <article v-if="post" class="max-w-3xl flex-1 prose prose-base-content">
+    <article v-if="post" class="sm:p-2 max-w-3xl flex-1 prose prose-base-content">
       <header class="mb-8 border-b border-base-300">
         <div class="mb-4 flex items-center gap-2">
           <time class="text-sm text-base-content/50">{{ post.published_at }}</time>
