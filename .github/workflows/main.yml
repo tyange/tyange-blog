@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: deploy on aws
 
     steps:
       - name: Checkout
@@ -22,7 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -36,8 +37,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: ".output,ecosystem.config.js"
-          target: "/home/ubuntu/dev/deploy/tyange-blog"
+          source: '.output,ecosystem.config.js'
+          target: ${{ vars.DEPLOY_PATH }}
           strip_components: 0
           debug: true
           rm: true
@@ -49,6 +50,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/dev/deploy/tyange-blog
+            cd ${{ vars.DEPLOY_PATH }}
             pm2 restart tyange-blog || pm2 start ecosystem.config.js
             pm2 save
