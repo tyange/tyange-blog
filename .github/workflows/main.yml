@@ -50,6 +50,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ${{ vars.DEPLOY_PATH }}
-            pm2 restart tyange-blog || pm2 start ecosystem.config.js
-            pm2 save
+            cd /home/***/to-the-world/deploy/tyange-blog
+            /home/ubuntu/.local/share/pnpm/pm2 restart tyange-blog || /home/ubuntu/.local/share/pnpm/pm2 start ecosystem.config.js
+            /home/ubuntu/.local/share/pnpm/pm2 save
