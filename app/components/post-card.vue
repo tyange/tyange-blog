@@ -56,30 +56,6 @@ onUnmounted(() => {
       class="w-full h-full"
       :to="`/post/${item.post_id}`"
     >
-      <div class="relative">
-        <div
-          ref="tagsContainer"
-          class="flex gap-3 overflow-x-auto scrollbar-hide"
-        >
-          <span
-            v-for="tag in item.tags"
-            :key="tag"
-            ref="tags"
-            class="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary"
-          >
-            {{ tag }}
-          </span>
-        </div>
-        <div
-          v-if="showLeftShadow"
-          class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-base-100 to-transparent pointer-events-none"
-        />
-
-        <div
-          v-if="showRightShadow"
-          class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-base-100 to-transparent pointer-events-none"
-        />
-      </div>
       <h3 class="mb-2 text-lg font-bold text-base-content">
         {{ item.title }}
       </h3>
@@ -88,6 +64,19 @@ onUnmounted(() => {
       </p>
       <div class="text-sm text-base-content/50">
         {{ item.published_at }}
+      </div>
+      <div
+        ref="tagsContainer"
+        class="flex gap-3 mt-3"
+      >
+        <span
+          v-for="tag in item.tags"
+          :key="tag"
+          ref="tags"
+          class="badge badge-xs shadow-xs border border-gray-100"
+        >
+          {{ tag }}
+        </span>
       </div>
     </NuxtLink>
   </div>
