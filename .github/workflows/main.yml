@@ -35,7 +35,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
-          USER_NAME: ${{ secrets.USER_NAME }}
+          username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           source: '.output,ecosystem.config.js'
           target: ${{ vars.DEPLOY_PATH }}
