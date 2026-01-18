@@ -35,8 +35,8 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.PRIVATE_SSH_KEY }}
           source: '.output,ecosystem.config.js'
           target: ${{ vars.DEPLOY_PATH }}
           strip_components: 0
@@ -47,8 +47,8 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.PRIVATE_SSH_KEY }}
           script: |
             cd ${{ vars.DEPLOY_PATH }}
             /home/ubuntu/.local/share/pnpm/pm2 restart tyange-blog || /home/ubuntu/.local/share/pnpm/pm2 start ecosystem.config.js
