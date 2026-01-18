@@ -3,9 +3,7 @@ import type { PostListItem } from '~~/shared/types/post-list-item.types'
 import type { CMSResponse } from '~~/shared/types/response.types'
 import PostCard from '~/components/post-card.vue'
 
-const config = useRuntimeConfig()
-
-const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>(`/posts`, { baseURL: config.public.tyangeCmsApiBase })
+const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>(`/api/posts`)
 
 const postList = computed<PostListItem[]>(() => {
   if (!data?.value) {
