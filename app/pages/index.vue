@@ -5,7 +5,7 @@ import PostCard from '~/components/post-card.vue'
 
 const config = useRuntimeConfig()
 
-const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>(`/posts`, { baseURL: import.meta.server ? config.public.tyangeCmsApiBase : 'https://tyange.com/api/cms' })
+const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>(`/posts`, { baseURL: config.public.tyangeCmsApiBase })
 
 const postList = computed<PostListItem[]>(() => {
   if (!data?.value) {
