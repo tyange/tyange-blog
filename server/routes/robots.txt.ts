@@ -4,7 +4,7 @@ export default defineEventHandler((event) => {
   return `User-Agent: *
 Allow: /
 
-Sitemap: https://blog.tyange.xyz/sitemap.xml
+Sitemap: https://blog.tyange.com/sitemap.xml
 
 User-agent: CCBot
 Disallow: /
