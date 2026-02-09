@@ -71,4 +71,9 @@ export default defineNuxtConfig({
     '/': { swr: import.meta.env.PROD ? 60 : false },
     '/post/**': { swr: import.meta.env.PROD ? 3600 : false },
   },
+  nitro: {
+    prerender: {
+      routes: ['/rss.xml'],
+    },
+  },
 })

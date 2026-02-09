@@ -1,4 +1,14 @@
 <script setup lang="ts">
+useHead({
+  link: [
+    {
+      rel: 'alternate',
+      type: 'application/rss+xml',
+      title: 'Tyange\'s Blog RSS Feed',
+      href: '/rss.xml',
+    },
+  ],
+})
 </script>
 
 <template>

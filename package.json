@@ -20,6 +20,7 @@
     "@types/markdown-it": "^14.1.2",
     "@vueuse/core": "^12.8.2",
     "@vueuse/nuxt": "12.5.0",
+    "feed": "^5.2.0",
     "lucide-vue-next": "^0.474.0",
     "markdown-it": "^14.1.0",
     "minisearch": "^7.1.2",
