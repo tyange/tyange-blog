@@ -62,9 +62,6 @@ onUnmounted(() => {
       <p class="mb-4 text-base-content/70">
         {{ item.description }}
       </p>
-      <div class="text-sm text-base-content/50">
-        {{ item.published_at }}
-      </div>
       <div
         ref="tagsContainer"
         class="flex gap-3 mt-3"
