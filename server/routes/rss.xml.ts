@@ -1,7 +1,7 @@
 import { Feed } from 'feed'
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
+  const config = useRuntimeConfig(event)
 
   const feed = new Feed({
     title: 'Tyange\'s Blog',
