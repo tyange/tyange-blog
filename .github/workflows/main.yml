@@ -30,6 +30,8 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          NUXT_PUBLIC_TYANGE_CMS_API_BASE: ${{ vars.API_BASE }}
 
       - name: Deploy files via SCP
         uses: appleboy/scp-action@v0.1.7
