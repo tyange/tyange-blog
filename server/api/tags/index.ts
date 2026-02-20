@@ -1,9 +1,8 @@
 export default defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, 'slug')
   const config = useRuntimeConfig(event)
 
   return await $fetch<PostListItem>(
-    `/post/${slug}`,
+    `/tags?category=general`,
     { baseURL: config.public.tyangeCmsApiBase },
   )
 })
