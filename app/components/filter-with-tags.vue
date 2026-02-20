@@ -17,7 +17,7 @@ watch(() => props.selectedTag, (val) => {
 
 <template>
   <form ref="formRef" class="filter">
-    <div v-if="!isLoading && data?.data" class="flex gap-2 items-center">
+    <div v-if="!isLoading && data?.data">
       <input class="btn btn-xs btn-circle btn-soft btn-secondary" type="reset" value="×" @click="emits('handleChangeSelectedTags')">
       <input
         v-for="tag in data.data"
