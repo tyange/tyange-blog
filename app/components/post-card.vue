@@ -68,7 +68,7 @@ onUnmounted(() => {
       >
         <span
           v-for="tag in item.tags"
-          :key="tag"
+          :key="tag.tag"
           ref="tags"
           class="badge badge-xs shadow-xs border border-gray-100"
         >

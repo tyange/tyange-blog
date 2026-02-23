@@ -9,7 +9,7 @@ defineProps<{ item: PostListItem }>()
     <div class="flex gap-3">
       <span
         v-for="tag in item.tags"
-        :key="tag"
+        :key="tag.tag"
         class="mb-4 inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
       >
         {{ tag }}

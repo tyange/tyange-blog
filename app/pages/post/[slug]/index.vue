@@ -37,7 +37,7 @@ useSeoMeta({
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tag in post.tags"
-            :key="tag"
+            :key="tag.tag"
             class="rounded-full bg-base-200 px-3 py-1 text-sm text-base-content/80"
           >
             {{ tag }}
