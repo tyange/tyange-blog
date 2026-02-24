@@ -72,7 +72,7 @@ onUnmounted(() => {
           ref="tags"
           class="badge badge-xs shadow-xs border border-gray-100"
         >
-          {{ tag }}
+          {{ tag.tag }}
         </span>
       </div>
     </NuxtLink>
