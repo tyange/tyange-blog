@@ -8,7 +8,7 @@ module.exports = {
       NODE_ENV: 'production',
       NITRO_PORT: 3000,
       NITRO_HOST: '0.0.0.0',
-      NUXT_PUBLIC_TYANGE_CMS_API_BASE: 'https://tyange.com/api/cms',
+      NUXT_PUBLIC_TYANGE_CMS_API_BASE: 'http://localhost:8080',
     },
     time: true,
     merge_logs: true,
