@@ -3,9 +3,16 @@ import { Menu } from 'lucide-vue-next'
 import { githubUrl } from '~~/shared/constants/my-info'
 
 const sidebarStore = useSidebarStore()
+const { copy, copied } = useClipboard()
 
 async function handleNavigateTo(url: string, isExternal: boolean) {
   await navigateTo(url, { external: isExternal })
+}
+
+async function handleCopyRssUrl() {
+  const rssUrl = new URL('/rss.xml', window.location.origin).toString()
+
+  await copy(rssUrl)
 }
 </script>
 
@@ -26,12 +33,11 @@ async function handleNavigateTo(url: string, isExternal: boolean) {
           <div class="divider divider-horizontal m-0" />
           <a
             href="/rss.xml"
-            target="_blank"
-            rel="noopener noreferrer"
             class="hover:text-orange-600 transition-colors whitespace-nowrap"
-            aria-label="RSS 피드"
+            :aria-label="copied ? 'RSS 피드 URL 복사됨' : 'RSS 피드 URL 복사'"
+            @click.prevent="handleCopyRssUrl"
           >
-            RSS
+            {{ copied ? 'Copied' : 'RSS' }}
           </a>
           <div class="divider divider-horizontal m-0" />
           <button
