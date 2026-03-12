@@ -24,6 +24,16 @@ async function handleNavigateTo(url: string, isExternal: boolean) {
         <div class="flex items-center text-xs sm:text-sm w-fit font-normal">
           <span class="whitespace-nowrap">© {{ new Date().getFullYear() }} <span>tyange</span></span>
           <div class="divider divider-horizontal m-0" />
+          <a
+            href="/rss.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-orange-600 transition-colors whitespace-nowrap"
+            aria-label="RSS 피드"
+          >
+            RSS
+          </a>
+          <div class="divider divider-horizontal m-0" />
           <button
             class="hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap"
             aria-label="GitHub 프로필"
