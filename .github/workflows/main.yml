@@ -3,7 +3,25 @@ name: Deploy Nuxt to Lightsail
 on:
   push:
     branches: [master]
+  repository_dispatch:
+    types: [cms-content-changed]
   workflow_dispatch:
+    inputs:
+      content_event:
+        description: CMS content event type
+        required: false
+        default: manual
+      post_id:
+        description: Post identifier
+        required: false
+      visibility:
+        description: Visible or hidden content
+        required: false
+        default: visible
+
+concurrency:
+  group: tyange-blog-deploy
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -27,6 +45,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Log trigger context
+        run: |
+          echo "event_name=${{ github.event_name }}"
+          echo "event_action=${{ github.event.action || '' }}"
+          echo "github.event.client_payload.source=${{ github.event.client_payload.source || 'github' }}"
+          echo "github.event.client_payload.content_event=${{ github.event.client_payload.content_event || inputs.content_event || 'unknown' }}"
+          echo "github.event.client_payload.post_id=${{ github.event.client_payload.post_id || inputs.post_id || '' }}"
+          echo "github.event.client_payload.visibility=${{ github.event.client_payload.visibility || inputs.visibility || '' }}"
 
       - name: Build
         run: pnpm build
