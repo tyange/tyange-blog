@@ -5,16 +5,13 @@ import FilterWithTags from '~/components/filter-with-tags.vue'
 import PostCard from '~/components/post-card.vue'
 
 const selectedTag = ref<string | null>(null)
-const query = computed(() => ({ tag: selectedTag.value ? selectedTag.value : undefined }))
 
-const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>(`/api/posts`, { query })
+const { data } = await useFetch<CMSResponse<{ posts: PostListItem[] }>>('/api/posts')
 
 const postList = computed<PostListItem[]>(() => {
-  if (!data?.value) {
-    return []
-  }
-
-  return data.value.data.posts
+  const posts = data.value?.data.posts ?? []
+  if (!selectedTag.value) return posts
+  return posts.filter(p => p.tags.some(t => t.tag === selectedTag.value))
 })
 
 function handleChangeSelectedTags(tag?: string) {
