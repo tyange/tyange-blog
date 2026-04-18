@@ -67,13 +67,26 @@ export default defineNuxtConfig({
       tyangeCmsApiBase: '',
     },
   },
-  routeRules: {
-    '/': { swr: import.meta.env.PROD ? 60 : false },
-    '/post/**': { swr: import.meta.env.PROD ? 3600 : false },
-  },
   nitro: {
     prerender: {
-      routes: ['/rss.xml'],
+      crawlLinks: true,
+      routes: ['/', '/rss.xml'],
+    },
+  },
+  hooks: {
+    async 'prerender:routes'(ctx) {
+      const base = process.env.NUXT_PUBLIC_TYANGE_CMS_API_BASE
+      if (!base) return
+      try {
+        const res = await fetch(`${base}/posts`)
+        const json = await res.json() as { data?: { posts?: { post_id: string }[] } }
+        for (const post of json?.data?.posts ?? []) {
+          ctx.routes.add(`/post/${post.post_id}`)
+        }
+      }
+      catch (e) {
+        console.error('prerender:routes CMS fetch failed', e)
+      }
     },
   },
 })

@@ -10,9 +10,9 @@ with Nuxt & Tailwind CSS & DaisyUI & Nuxt-MDC & Pinia
 
 ## Deployment
 
-`master` 브랜치에 푸시되면 GitHub Actions가 `pnpm build`로 Nuxt 산출물을 다시 만들고, Lightsail 서버에 `.output`과 `ecosystem.config.js`를 배포한 뒤 PM2의 `tyange-blog` 프로세스를 재시작합니다.
+`master` 브랜치에 푸시되면 GitHub Actions가 `bun run generate`로 정적 사이트를 빌드하고, Lightsail 서버의 nginx 루트에 `.output/public` 산출물을 배포한 뒤 nginx를 reload합니다.
 
-이 빌드 과정에서 CMS API(`NUXT_PUBLIC_TYANGE_CMS_API_BASE`)를 다시 조회하므로, 게시글 publish/update/delete 이후 재배포가 실행되면 최신 콘텐츠 기준으로 앱 응답과 `rss.xml`이 함께 갱신됩니다.
+이 빌드 과정에서 CMS API(`NUXT_PUBLIC_TYANGE_CMS_API_BASE`)를 다시 조회하므로, 게시글 publish/update/delete 이후 재배포가 실행되면 최신 콘텐츠 기준으로 prerender된 HTML과 `rss.xml`이 함께 갱신됩니다.
 
 ## On-Demand Rebuild Trigger
 

@@ -32,19 +32,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: 9
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: pnpm
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Log trigger context
         run: |
@@ -55,30 +49,28 @@ jobs:
           echo "github.event.client_payload.post_id=${{ github.event.client_payload.post_id || inputs.post_id || '' }}"
           echo "github.event.client_payload.visibility=${{ github.event.client_payload.visibility || inputs.visibility || '' }}"
 
-      - name: Build
-        run: pnpm build
+      - name: Generate static site
+        run: bun run generate
         env:
           NUXT_PUBLIC_TYANGE_CMS_API_BASE: ${{ vars.API_BASE }}
 
-      - name: Deploy files via SCP
+      - name: Deploy static files via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.PRIVATE_SSH_KEY }}
-          source: '.output,ecosystem.config.js'
+          source: '.output/public/'
           target: ${{ vars.DEPLOY_PATH }}
-          strip_components: 0
+          strip_components: 2
           debug: true
           rm: true
 
-      - name: Restart PM2
+      - name: Reload nginx
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           script: |
-            cd ${{ vars.DEPLOY_PATH }}
-            /home/ubuntu/.local/share/pnpm/pm2 restart tyange-blog || /home/ubuntu/.local/share/pnpm/pm2 start ecosystem.config.js
-            /home/ubuntu/.local/share/pnpm/pm2 save
+            sudo nginx -t && sudo systemctl reload nginx
