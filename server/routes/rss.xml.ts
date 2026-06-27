@@ -1,4 +1,5 @@
 import { Feed } from 'feed'
+import { hasHiddenTag } from '~~/shared/constants/hidden-tags'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
@@ -23,7 +24,7 @@ export default defineEventHandler(async (event) => {
       `${config.public.tyangeCmsApiBase}/posts`,
     )
 
-    const posts = res.data.posts
+    const posts = res.data.posts.filter(post => !hasHiddenTag(post))
 
     posts.forEach((post) => {
       feed.addItem({

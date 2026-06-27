@@ -1,5 +1,6 @@
 import type { PostListItem } from '~~/shared/types/post-list-item.types'
 import type { CMSResponse } from '~~/shared/types/response.types'
+import { hasHiddenTag } from '~~/shared/constants/hidden-tags'
 
 export default defineEventHandler(async () => {
   const config = useRuntimeConfig()
@@ -13,12 +14,14 @@ export default defineEventHandler(async () => {
       return []
     }
 
-    return response.data.posts.map(post => ({
-      loc: `/post/${post.post_id}`,
-      lastmod: new Date(`${post.published_at}T00:00:00+09:00`).toISOString(),
-      changefreq: 'weekly' as const,
-      priority: 0.8,
-    }))
+    return response.data.posts
+      .filter(post => !hasHiddenTag(post))
+      .map(post => ({
+        loc: `/post/${post.post_id}`,
+        lastmod: new Date(`${post.published_at}T00:00:00+09:00`).toISOString(),
+        changefreq: 'weekly' as const,
+        priority: 0.8,
+      }))
   }
   catch (error) {
     console.error('Sitemap posts fetch error:', error)
